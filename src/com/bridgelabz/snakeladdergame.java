@@ -25,6 +25,7 @@ public class snakeladdergame {static final int START_POSITION = 0;
 
         while (playerPosition <= FINAL_POSITION) {
             diceCount++;
+            //snake
 
             int roll = diceRoll();
             System.out.println(roll);
