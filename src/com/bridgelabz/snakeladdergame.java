@@ -1,11 +1,12 @@
 package com.bridgelabz;
 
-public class snakeladdergame {static final int START_POSITION = 0;
+public class snakeladdergame {
     static final int FINAL_POSITION = 100;
 
     static final int NO_PLAY = 0;
     static final int IS_SNAKE = 1;
     static final int IS_LADDER = 2;
+    private static final int START_POSITION =0 ;
 
     static int diceCount =0;
 
@@ -23,7 +24,8 @@ public class snakeladdergame {static final int START_POSITION = 0;
 
         int playerPosition = START_POSITION;
 
-        while (playerPosition <= FINAL_POSITION) {
+        while (playerPosition < FINAL_POSITION) {
+            System.out.println();
             diceCount++;
 
             int roll = diceRoll();
@@ -34,14 +36,18 @@ public class snakeladdergame {static final int START_POSITION = 0;
                 case IS_SNAKE :
                     System.out.println("Snake");
                     playerPosition -= roll;
-                    if(playerPosition < START_POSITION)
+                    if(playerPosition < START_POSITION) {
                         playerPosition = START_POSITION;
-                    System.out.println("Player position : " + playerPosition);
+                        System.out.println("!!!! Player position getting less than " + START_POSITION + " !!!!");
+                    }
                     break;
                 case IS_LADDER :
                     System.out.println("Ladder");
                     playerPosition += roll;
-                    System.out.println("Player position : " + playerPosition);
+                    if(playerPosition > FINAL_POSITION) {
+                        playerPosition -= roll;
+                        System.out.println("!!!!Player position getting more than " + FINAL_POSITION + " !!!!");
+                    }
                     break;
                 default:
                     System.out.println("No play");
@@ -51,13 +57,13 @@ public class snakeladdergame {static final int START_POSITION = 0;
 
         }
 
-
-        System.out.print("Total Dice count : " + diceCount);
         System.out.println("Finally Player position : " + playerPosition);
 
     }
-
 }
+
+
+
 
 
 
